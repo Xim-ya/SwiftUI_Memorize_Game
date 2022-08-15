@@ -11,6 +11,9 @@
 		6F19776328AA1FC2007F76E7 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F19776228AA1FC2007F76E7 /* HomeViewModel.swift */; };
 		6F19776928AA2130007F76E7 /* EmojiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F19776828AA2130007F76E7 /* EmojiModel.swift */; };
 		6F19776D28AA308D007F76E7 /* EmojiOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F19776C28AA308D007F76E7 /* EmojiOption.swift */; };
+		6F19777128AA6620007F76E7 /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F19777028AA6620007F76E7 /* GameScreen.swift */; };
+		6F19777428AA6871007F76E7 /* SwiftUIRouter in Frameworks */ = {isa = PBXBuildFile; productRef = 6F19777328AA6871007F76E7 /* SwiftUIRouter */; };
+		6F19777B28AA728D007F76E7 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F19777A28AA728D007F76E7 /* GameViewModel.swift */; };
 		6FBCB75828A93F01000DCA38 /* MemorizeGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBCB75728A93F01000DCA38 /* MemorizeGameApp.swift */; };
 		6FBCB75A28A93F01000DCA38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBCB75928A93F01000DCA38 /* ContentView.swift */; };
 		6FBCB75C28A93F02000DCA38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FBCB75B28A93F02000DCA38 /* Assets.xcassets */; };
@@ -42,6 +45,8 @@
 		6F19776228AA1FC2007F76E7 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		6F19776828AA2130007F76E7 /* EmojiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiModel.swift; sourceTree = "<group>"; };
 		6F19776C28AA308D007F76E7 /* EmojiOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiOption.swift; sourceTree = "<group>"; };
+		6F19777028AA6620007F76E7 /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
+		6F19777A28AA728D007F76E7 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		6FBCB75428A93F01000DCA38 /* MemorizeGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemorizeGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FBCB75728A93F01000DCA38 /* MemorizeGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeGameApp.swift; sourceTree = "<group>"; };
 		6FBCB75928A93F01000DCA38 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F19777428AA6871007F76E7 /* SwiftUIRouter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				6F19775A28AA1729007F76E7 /* Home */,
+				6F19776F28AA660B007F76E7 /* Game */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -90,6 +97,7 @@
 		6F19775A28AA1729007F76E7 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				6FBCB75728A93F01000DCA38 /* MemorizeGameApp.swift */,
 				6F19776428AA1FCF007F76E7 /* View */,
 				6F19776128AA1FA9007F76E7 /* ViewModel */,
 			);
@@ -152,6 +160,31 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		6F19776F28AA660B007F76E7 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				6F19777928AA727C007F76E7 /* ViewModel */,
+				6F19777828AA7255007F76E7 /* View */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		6F19777828AA7255007F76E7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6F19777028AA6620007F76E7 /* GameScreen.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6F19777928AA727C007F76E7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6F19777A28AA728D007F76E7 /* GameViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		6FBCB74B28A93F01000DCA38 = {
 			isa = PBXGroup;
 			children = (
@@ -178,7 +211,6 @@
 				6F19776A28AA305F007F76E7 /* Util */,
 				6F19776628AA20C6007F76E7 /* Domain */,
 				6F19775928AA1704007F76E7 /* Presentation */,
-				6FBCB75728A93F01000DCA38 /* MemorizeGameApp.swift */,
 				6FBCB75928A93F01000DCA38 /* ContentView.swift */,
 				6FBCB75B28A93F02000DCA38 /* Assets.xcassets */,
 				6FBCB75D28A93F02000DCA38 /* Preview Content */,
@@ -227,6 +259,9 @@
 			dependencies = (
 			);
 			name = MemorizeGame;
+			packageProductDependencies = (
+				6F19777328AA6871007F76E7 /* SwiftUIRouter */,
+			);
 			productName = MemorizeGame;
 			productReference = 6FBCB75428A93F01000DCA38 /* MemorizeGame.app */;
 			productType = "com.apple.product-type.application";
@@ -300,6 +335,9 @@
 				Base,
 			);
 			mainGroup = 6FBCB74B28A93F01000DCA38;
+			packageReferences = (
+				6F19777228AA6870007F76E7 /* XCRemoteSwiftPackageReference "SwiftUIRouter" */,
+			);
 			productRefGroup = 6FBCB75528A93F01000DCA38 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -346,7 +384,9 @@
 				6F19776D28AA308D007F76E7 /* EmojiOption.swift in Sources */,
 				6FBCB75828A93F01000DCA38 /* MemorizeGameApp.swift in Sources */,
 				6F19775F28AA1785007F76E7 /* HomeScreen.swift in Sources */,
+				6F19777B28AA728D007F76E7 /* GameViewModel.swift in Sources */,
 				6F19776928AA2130007F76E7 /* EmojiModel.swift in Sources */,
+				6F19777128AA6620007F76E7 /* GameScreen.swift in Sources */,
 				6F19776328AA1FC2007F76E7 /* HomeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -675,6 +715,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6F19777228AA6870007F76E7 /* XCRemoteSwiftPackageReference "SwiftUIRouter" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/frzi/SwiftUIRouter.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6F19777328AA6871007F76E7 /* SwiftUIRouter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6F19777228AA6870007F76E7 /* XCRemoteSwiftPackageReference "SwiftUIRouter" */;
+			productName = SwiftUIRouter;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6FBCB74C28A93F01000DCA38 /* Project object */;
 }

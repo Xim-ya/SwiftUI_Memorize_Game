@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct HomeScreen: View {
     let vm = HomeViewModel()
     var body: some View {
@@ -18,13 +19,9 @@ struct HomeScreen: View {
                 Spacer()
             }
             .navigationTitle("Memorize")
-            .navigationBarItems(trailing: Button(action: {
-                print("Start Game Action")
-            }, label: {
-                Text("Start Game")
-                
-            }))
+            .navigationBarItems(trailing: NavigationLink(destination: GameScreen(emojiList: ["emoji", "emoji2"]), label: {Text("Start Game")}))
         }
+        .navigationViewStyle(.stack)
         
     }
 }
@@ -51,7 +48,6 @@ struct EmojiOptionListView: View {
                         }
                     }
                 }
-                .frame(width: geometry.size.width - 40, alignment: .leading)
                 .overlay(VStack{Divider().offset(x: 0, y: 20)})
                 .listRowSeparator(.hidden)
             }
