@@ -10,36 +10,50 @@ import SwiftUI
 struct HomeScreen: View {
     let vm = HomeViewModel()
     var body: some View {
-        VStack {
-            Spacer()
-                .frame(height: 80)
-            Text("Memorize")
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .font(.system(size: 34, weight: .bold, design: .default))
-                .padding(.horizontal, 20)
-            Spacer()
-                .frame(height: 32)
-            EmojiOptionListView(emojiOptionList: vm.emojiOptionList)
-            Spacer()
+        NavigationView {
+            VStack {
+                Spacer()
+                    .frame(height: 32)
+                EmojiOptionListView(emojiOptionList: vm.emojiOptionList, selectedOptionIndex: vm.selectedOptionIndex)
+                Spacer()
+            }
+            .navigationTitle("Memorize")
+            .navigationBarItems(trailing: Button(action: {
+                print("Start Game Action")
+            }, label: {
+                Text("Start Game")
+                
+            }))
         }
+        
     }
 }
 
 struct EmojiOptionListView: View {
     var emojiOptionList: [Int : [String]]
+    @State var selectedOptionIndex: Int?
     var body: some View {
         GeometryReader { geometry in
             List(Array(emojiOptionList), id: \.key){ key, value in
-                HStack {
-                    Text(EmojiOptionKeyMap[key]!)
-                    ForEach(value, id: \.self){ item in
-                        Text(item)
+                Button {
+                    selectedOptionIndex = key
+                } label: {
+                    HStack {
+                        Text(EmojiOptionKeyMap[key]!)
+                        ForEach(value, id: \.self){ item in
+                            Text(item)
+                        }
+                        .listRowInsets(EdgeInsets())
+                        Spacer()
+                        if selectedOptionIndex == key {
+                             Image(systemName: "checkmark")
+                                .foregroundColor(Color.blue)
+                        }
                     }
-                    .listRowInsets(EdgeInsets())
                 }
-                .listRowSeparator(.hidden)
                 .frame(width: geometry.size.width - 40, alignment: .leading)
                 .overlay(VStack{Divider().offset(x: 0, y: 20)})
+                .listRowSeparator(.hidden)
             }
             .listStyle(PlainListStyle())
             .listRowInsets(EdgeInsets(.init(top: 0, leading: 40, bottom: 0, trailing: 0)))

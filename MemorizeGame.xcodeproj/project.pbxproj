@@ -115,6 +115,7 @@
 		6F19776628AA20C6007F76E7 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				6F19776E28AA481A007F76E7 /* Service */,
 				6F19776728AA20CF007F76E7 /* Model */,
 			);
 			path = Domain;
@@ -142,6 +143,13 @@
 				6F19776C28AA308D007F76E7 /* EmojiOption.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		6F19776E28AA481A007F76E7 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		6FBCB74B28A93F01000DCA38 = {
