@@ -10,8 +10,8 @@ import SwiftUI
 struct GameScreen: View {
     @StateObject private var vm: GameViewModel
     
-    init(emojiList: [String]) {
-        _vm = StateObject(wrappedValue: GameViewModel(emojiList: emojiList))
+    init(emojiOptionKey: Int) {
+        _vm = StateObject(wrappedValue: GameViewModel(emojiOptionKey: emojiOptionKey))
     }
     
     private func responsiveColumns(width: CGFloat) -> [GridItem] {
@@ -20,7 +20,7 @@ struct GameScreen: View {
        }
     }
 
-    private let tempList:[String] = ["1" , "2" , "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]    
+
 
     var body: some View {
         GeometryReader { geometry in
@@ -29,9 +29,9 @@ struct GameScreen: View {
                     Text("3")
                         .font(.system(.largeTitle))
                     Spacer()
-                    LazyVGrid(columns: responsiveColumns(width: geometry.size.height)) {
-                        ForEach(tempList, id: \.self) { emoji in
-                            CardView(emoji: emoji, geometrySize: geometry.size)
+                    LazyVGrid(columns: responsiveColumns(width: geometry.size.height), spacing: 10) {
+                        ForEach(vm.emojiModelList , id: \.id) { emoji in
+                            CardView(emoji: emoji.emoji, geometrySize: geometry.size)
                         }
                     }
                     Spacer()
@@ -61,11 +61,17 @@ struct GameScreen: View {
 struct CardView: View {
     let emoji:String
     let geometrySize:CGSize
+    @State var isCardSelected:Bool = true;
     var body: some View {
         ZStack {
             Text(emoji)
-                .foregroundColor(Color.white)
-            RoundedRectangle(cornerRadius: 12)
+                .zIndex(isCardSelected ? 1 : 0)
+                .font(.system(size: 54))
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .stroke(.orange, lineWidth: 4)
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .fill(isCardSelected ? Color.white : Color.orange)
+                
         }
         .aspectRatio(CGSize(width: 1, height: 1.19), contentMode: .fit)
     }
@@ -75,6 +81,10 @@ struct CardView: View {
 
 struct GameScreen_Previews: PreviewProvider {
     static var previews: some View {
-        GameScreen(emojiList: ["emoji", "emoji2"])
+        GeometryReader { geometry in
+            CardView(emoji: "🍉", geometrySize: geometry.size)
+                .padding(.all, 50)
+        }
+        
     }
 }

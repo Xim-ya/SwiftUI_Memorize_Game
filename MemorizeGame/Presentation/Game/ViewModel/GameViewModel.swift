@@ -8,10 +8,30 @@
 import Foundation
 
 class GameViewModel: ObservableObject {
-    let emojiList:[String]
     
-    init(emojiList:[String]) {
-        self.emojiList = emojiList
+    
+//    let emojiList:[String]
+    var emojiModelList: [EmojiModel] = []
+    
+    func makeEmojiList(emojiList: [String]) -> [EmojiModel] {
+        var emojiPairList: [EmojiModel] = []
+
+        // Make Pair
+        for index in 0...5 {
+            for _ in 1...2 {
+                emojiPairList.append(EmojiModel(id: UUID(), emoji: emojiList[index]))
+            }
+        }
+        
+        return emojiPairList;
     }
     
+    init(emojiOptionKey: Int) {
+            self.emojiModelList = makeEmojiList(emojiList: EmojiOptions[emojiOptionKey]!)
+    }
+    
+  
 }
+
+
+

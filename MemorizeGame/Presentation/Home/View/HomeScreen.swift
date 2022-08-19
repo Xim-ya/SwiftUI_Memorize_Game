@@ -9,17 +9,36 @@ import SwiftUI
 
 
 struct HomeScreen: View {
-    let vm = HomeViewModel()
+    @State var navigateToViewB: Bool = false
+    @ObservedObject var vm = HomeViewModel()
     var body: some View {
         NavigationView {
             VStack {
                 Spacer()
                     .frame(height: 32)
-                EmojiOptionListView(emojiOptionList: vm.emojiOptionList, selectedOptionIndex: vm.selectedOptionIndex)
+                EmojiOptionListView(emojiOptionList: vm.emojiOptionList,
+                                    selectedOptionIndex: $vm.selectedOptionIndex
+                )
                 Spacer()
+                NavigationLink(
+                    destination: GameScreen(emojiOptionKey: vm.selectedOptionIndex ?? 4),
+                        isActive: $navigateToViewB,
+                        label: {
+                          EmptyView()
+                        }
+                      )
             }
             .navigationTitle("Memorize")
-            .navigationBarItems(trailing: NavigationLink(destination: GameScreen(emojiList: ["emoji", "emoji2"]), label: {Text("Start Game")}))
+            .navigationBarItems(trailing: Button(action: {
+                if(vm.selectedOptionIndex == nil){
+                    print("nno")
+                    
+                } else {
+                    navigateToViewB = true
+                }
+            }, label: {
+                Text("aim")
+            }))
         }
         .navigationViewStyle(.stack)
         
@@ -28,7 +47,8 @@ struct HomeScreen: View {
 
 struct EmojiOptionListView: View {
     var emojiOptionList: [Int : [String]]
-    @State var selectedOptionIndex: Int?
+    @Binding var selectedOptionIndex: Int?
+    
     var body: some View {
         GeometryReader { geometry in
             List(Array(emojiOptionList), id: \.key){ key, value in

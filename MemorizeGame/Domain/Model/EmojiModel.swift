@@ -6,14 +6,16 @@
 //
 
 import Foundation
+import SwiftUI
 
 class EmojiModel {
-    private(set) var id: Int
+    private(set) var id: UUID
     private(set) var emoji: String
     
-    init(id: Int, emoji: String) {
+    init(id: UUID, emoji: String) {
         self.id = id
         self.emoji = emoji
     }
  
 }
+
